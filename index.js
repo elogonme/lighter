@@ -4,9 +4,10 @@ $(document).ready(function() {
     const source = {
         colors: ['white', 'red', 'orange', 'yellow', 'cyan', 'green', 'blue', 'purple', 'pink']
       }
+
     const compiledHtml = template(source);
     $('#light-buttons').html(compiledHtml);
-
+    
     const light = new Light('d073d54171f5');
     let powerState = false;
     let state = 'off';
