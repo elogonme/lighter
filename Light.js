@@ -1,4 +1,4 @@
-const APIKey = 'cdfad860e7b39f81605abb07bf16e8b04dcddade62845bde72e002d8c4e71c68';
+const APIKey = API_KEY;
 
 class Light {
     constructor (id = 'd073d54171f5') {
@@ -75,3 +75,4 @@ class Light {
         };
     };
 };
+
