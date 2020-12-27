@@ -7,16 +7,25 @@
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/style.css"  rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <!-- Hadlebars html template for color buttons -->
+    <script id="light-control" type="text/x-handlebars-template">
+        {{#each colors}}
+        <button class="waves-effect waves-light btn {{this}} light-btn" value="{{this}}">{{this}}</button>
+        {{/each}}
+    </script>
 </head>
 <body>
     <section class="section">
-        <div class="container">
-          <h1 class="title center-align">
+        <div class="container center-align">
+          <h1 class="title">
             My LIFX Light Controller
           </h1>
-          <h4>Use buttons to control my <strong>LIFX</strong>!</h4>
-          <a id="power" class="btn-floating btn-large red pulse"><i class="material-icons">settings_power</i></a>
-          <button class="waves-effect waves-light btn yellow light-btn" value="yellow">Yellow</button>
+          <h4>Use buttons to control my <strong>LIFX</strong>!
+            <a id="power" class="btn-floating btn-large red pulse"><i class="material-icons">settings_power</i></a>
+        </h4>
+          <div id="light-buttons"></div>
         </div>
 
     </section>
