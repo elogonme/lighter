@@ -13,14 +13,19 @@ $(document).ready(function() {
     // light.setState('off');
     // Light power toggle button listener
     $('#power').on('click', () => {
-        powerState = !powerState;
-        powerState ? state = 'on' : state = 'off';
+        // powerState = !powerState;
+        // powerState ? state = 'on' : state = 'off';
         light.toggleLight();
     });
     
     // Light color control buttons
     $('.light-btn').on('click', function() {
-        light.setState( state, $(this).val());
+        light.setState( $(this).val());
+    });
+
+    $('#dimmer').on('click', function(){
+        const brightness = Math.round($(this).val() / 10) / 10;
+        light.setState(null, brightness);
     });
 });
 

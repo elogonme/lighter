@@ -48,12 +48,12 @@ class Light {
         };
     };
 
-    async setState(power = 'on', color = 'blue') {
-        const state = {
-            power: power,
-            color: color,
-            fast: false
-        }
+    async setState(color, brightness) {
+        const state = {};
+        if (color) state.color = color;
+        if (brightness) state.brightness = brightness;
+        state.fast = false;
+        
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${APIKey}`);
         myHeaders.append("Content-type", `application/json`);

@@ -1,0 +1,11 @@
+.btn {
+    margin: 4px 2px;
+}
+.btn.white {
+    color: #000;
+}
+
+.range-field {
+    width: 50%;
+    margin: 40px auto;
+}

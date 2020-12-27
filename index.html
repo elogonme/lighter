@@ -24,9 +24,16 @@
           </h1>
           <h4>Use buttons to control my <strong>LIFX</strong>!
             <a id="power" class="btn-floating btn-large red pulse"><i class="material-icons">settings_power</i></a>
-        </h4>
+            </h4>
           <div id="light-buttons"></div>
+          <form action="#">
+            <p class="range-field">
+              <input type="range" id="dimmer" min="0" max="100" />
+              <label for="dimmer">BRIGHTNESS</label>
+            </p>
+          </form>
         </div>
+        
 
     </section>
     <script type="text/javascript" src="js/materialize.min.js"></script>
