@@ -11,11 +11,8 @@ $(document).ready(function() {
     const light = new Light('d073d54171f5');
     let powerState = false;
     let state = 'off';
-    // light.setState('off');
     // Light power toggle button listener
     $('#power').on('click', () => {
-        // powerState = !powerState;
-        // powerState ? state = 'on' : state = 'off';
         light.toggleLight();
     });
     

@@ -1,5 +1,3 @@
-const APIKey = API_KEY;
-
 class Light {
     constructor (id = 'd073d54171f5') {
         this.id = id;
@@ -7,7 +5,7 @@ class Light {
 
     async listLights() { 
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${APIKey}`);
+        // myHeaders.append("Authorization", `Bearer ${APIKey}`);
     
         const requestOptions = {
         method: 'GET',
@@ -16,7 +14,7 @@ class Light {
         };
     
         try {
-            const response = await fetch("https://api.lifx.com/v1/lights/all", requestOptions);
+            const response = await fetch("/all", requestOptions);
             if (response.ok) {
                 const jsonResponse = await response.json();
                 console.log(`Light ID: ${jsonResponse[0].id}, Power state: ${jsonResponse[0].power}`);
@@ -29,7 +27,7 @@ class Light {
     
     async toggleLight() {
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${APIKey}`);
+        // myHeaders.append("Authorization", `Bearer ${APIKey}`);
         const requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -37,7 +35,7 @@ class Light {
           };
     
         try {
-            const response = await fetch(`https://api.lifx.com/v1/lights/${this.id}/toggle`, requestOptions);
+            const response = await fetch(`lights/${this.id}/toggle`, requestOptions);
             if (response.ok) {
                 const jsonResponse = await response.json(); 
                 console.log(`Light with id: ${jsonResponse.results[0].id}, label: ${jsonResponse.results[0].label} has been turned ${jsonResponse.results[0].power}...`);
@@ -55,7 +53,7 @@ class Light {
         state.fast = false;
         
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${APIKey}`);
+        // myHeaders.append("Authorization", `Bearer ${APIKey}`);
         myHeaders.append("Content-type", `application/json`);
         const requestOptions = {
             method: 'PUT',
@@ -65,7 +63,7 @@ class Light {
           };
     
         try {
-            const response = await fetch(`https://api.lifx.com/v1/lights/${this.id}/state`, requestOptions);
+            const response = await fetch(`lights/${this.id}/state`, requestOptions);
             if (response.ok) {
                 const jsonResponse = await response.json(); 
                 return jsonResponse;
@@ -74,5 +72,24 @@ class Light {
               console.log(error);
         };
     };
+
+    async listScenes() { 
+      const myHeaders = new Headers();
+      const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+      };
+  
+      try {
+          const response = await fetch("/scenes", requestOptions);
+          if (response.ok) {
+              const jsonResponse = await response.json();
+              return jsonResponse;
+            } throw new Error('Request failed!')
+          } catch(error) {
+            console.log(error);
+          }
+      };
 };
 
