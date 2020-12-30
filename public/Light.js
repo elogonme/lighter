@@ -50,6 +50,7 @@ class Light {
       const state = {};
       if (color) state.color = color;
       if (brightness) state.brightness = brightness;
+      state.power = 'on';
       state.fast = false;
       
       const myHeaders = new Headers();
@@ -117,6 +118,5 @@ class Light {
             console.log(error);
       };
   };
-  
 };
   
