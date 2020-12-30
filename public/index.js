@@ -36,7 +36,6 @@ $(document).ready(function() {
     // Light color control buttons
     $('.light-btn').on('click', function() {
         light.setState($(this).val());
-        console.log($(this).val());
     });
 
     // Dimmer control slider

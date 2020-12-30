@@ -1,11 +1,64 @@
-.btn {
-    margin: 4px 2px;
+body {
+    font-family: 'Montserrat', sans-serif;
 }
-.btn.white {
+
+h2 {
+    margin-top: 1.5rem; 
+}
+.title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #04AB5B;
+}
+
+.logo {
+    color: #FF7A00;
+    font-size: 80px;
+}
+
+.logo:hover {
+    text-shadow: 2px 2px 2px gray;
+}
+
+.header {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    text-align: center;
+    color: #04AB5B;
+}
+
+.light-btn {
+    margin: 7px 7px;
+    width: 90px;
+    height: 50px;
+    text-align: center;
+    padding: 0;
+}
+
+.btn.white, .btn.yellow {
     color: #000;
 }
 
 .range-field {
     width: 50%;
     margin: 40px auto;
+}
+
+@media screen and (max-width: 640px) {
+    .title {
+        margin: 10px auto;
+    }
+
+    .header {
+        margin: 10px auto;
+    }
+
+    .range-field {
+        width: 80%;
+        margin: 20px auto;
+    }
 }

@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>Lighter</title>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="style.css"  rel="stylesheet"/>
+    <link type="text/css" rel="stylesheet" href="style.css" media="screen,projection"/>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <!-- Hadlebars html template for color buttons -->
     <script id="light-control" type="text/x-handlebars-template">
@@ -20,20 +21,17 @@
 <body>
     <section class="section">
         <div class="container center-align">
-          <h1 class="title">
-            My LIFX Light Controller
-          </h1>
-          <h4>Use buttons to control my <strong>LIFX</strong>!
-            <a id="power" class="btn-floating btn-large red pulse"><i class="material-icons">settings_power</i></a>
-            </h4>
+          <h1 class="title">lighter</h1>
+          <a class="waves-effect waves-light" id="power"><i class="material-icons logo">batch_prediction</i></a>
+          <h2 class="header">Use buttons to control my light!</h2>
           <div id="light-buttons"></div>
           <form action="#">
             <p class="range-field">
+              <label for="dimmer" class="header">brightness</label>
               <input type="range" id="dimmer" min="0" max="100" />
-              <label for="dimmer">BRIGHTNESS</label>
             </p>
           </form>
-          <h4>Activate scene</h4>
+          <h4 class="header">select scene</h4>
           <div id="scene-buttons"></div>
         </div>
     </section>
