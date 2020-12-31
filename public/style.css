@@ -67,4 +67,8 @@ h2 {
         width: 80%;
         margin: 10px auto;
     }
+
+    .light-btn {
+        height: 40px;
+    }
 }
