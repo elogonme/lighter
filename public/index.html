@@ -14,7 +14,7 @@
     <!-- Hadlebars html template for color buttons -->
     <script id="light-control" type="text/x-handlebars-template">
         {{#each buttons}}
-        <button class="waves-effect waves-light btn {{this.name}} light-btn" value="{{this.uuid}}">{{this.name}}</button>
+        <button class="waves-effect waves-light btn {{this.name}} light-btn" value="{{this.value}}">{{this.name}}</button>
         {{/each}}
     </script>
 </head>
@@ -31,6 +31,8 @@
               <input type="range" id="dimmer" min="0" max="100" />
             </p>
           </form>
+          <h4 class="header">effects</h4>
+          <div id="effect-buttons"></div>
           <h4 class="header">select scene</h4>
           <div id="scene-buttons"></div>
         </div>

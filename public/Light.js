@@ -1,6 +1,7 @@
 class Light {
   constructor (id = 'd073d54171f5') {
       this.id = id;
+      this.lastColor = 'white';
   }
 
   async listLights() { 
@@ -48,7 +49,11 @@ class Light {
 
   async setState(color, brightness) {
       const state = {};
-      if (color) state.color = color;
+      if (color) {
+        state.color = color;
+        this.lastColor = color;
+      };
+
       if (brightness) state.brightness = brightness;
       state.power = 'on';
       state.fast = false;
@@ -65,6 +70,32 @@ class Light {
   
       try {
           const response = await fetch(`lights/${this.id}/state`, requestOptions);
+          if (response.ok) {
+              const jsonResponse = await response.json(); 
+              return jsonResponse;
+            } throw new Error('Request failed!')
+          } catch(error) {
+            console.log(error);
+      };
+  };
+
+  async setEffect(effect, parameters) {
+    console.log(parameters);
+      parameters.power_on = true;
+      parameters.persists = true;
+      console.log(parameters);
+      const myHeaders = new Headers();
+      // myHeaders.append("Authorization", `Bearer ${APIKey}`);
+      myHeaders.append("Content-type", `application/json`);
+      const requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: JSON.stringify(parameters),
+          redirect: 'follow'
+        };
+  
+      try {       
+          const response = await fetch(`lights/${this.id}/effects/${effect}`, requestOptions);
           if (response.ok) {
               const jsonResponse = await response.json(); 
               return jsonResponse;
@@ -119,4 +150,3 @@ class Light {
       };
   };
 };
-  

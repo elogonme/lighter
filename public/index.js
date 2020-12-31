@@ -1,23 +1,30 @@
 $(document).ready(function() {
     const templateSource = $('#light-control').html();
     let template = Handlebars.compile(templateSource);
-    const source = {
-        buttons: [{ name: 'white', uuid: 'white'}, { name: 'red', uuid: 'red'}, 
-        { name: 'orange', uuid: 'orange'}, { name: 'yellow', uuid: 'yellow'}, 
-        { name: 'cyan', uuid: 'cyan'}, { name: 'green', uuid: 'green'},
-        { name: 'blue', uuid: 'blue' }, { name: 'purple', uuid: 'purple'}, { name: 'pink', uuid: 'pink'}]
+    const colors = {
+        buttons: [{ name: 'white', value: 'white'}, { name: 'red', value: 'red'}, 
+        { name: 'orange', value: 'orange'}, { name: 'yellow', value: 'yellow'}, 
+        { name: 'cyan', value: 'cyan'}, { name: 'green', value: 'green'},
+        { name: 'blue', value: 'blue' }, { name: 'purple', value: 'purple'}, { name: 'pink', value: 'pink'}]
+      };
+
+    const effects = {
+        buttons: [{ name: 'chin-chin', value: 'pulse'}, { name: 'breathe', value: 'breathe'}, { name: 'move', value: 'move'}]
       };
 
     let sceneSource = {};
-      
-    const compiledHtml = template(source);
+    
+    const compiledHtml = template(colors);
     $('#light-buttons').html(compiledHtml);
+
+    const effectsHtml = template(effects);
+    $('#effect-buttons').html(effectsHtml);
     
     const light = new Light('d073d54171f5');
     // Get predefined light scenes and output buttons
     light.listScenes().then(scenes => {
         return scenes.map(element => {
-            return { name: element.name.toLowerCase(), uuid: element.uuid };
+            return { name: element.name.toLowerCase(), value: element.uuid };
         });
     }).then(scenesArr => {
         sceneSource.buttons = scenesArr;
@@ -28,24 +35,45 @@ $(document).ready(function() {
         });
     });
 
-    // Light power toggle button listener
+    // Light power toggle button handler
     $('#power').on('click', () => {
         light.toggleLight();
     });
     
     // Light color control buttons
-    $('.light-btn').on('click', function() {
+    $('#light-buttons').children().on('click', function() {
         light.setState($(this).val());
     });
 
-    // Dimmer control slider
+    // Dimmer control slider handler
     $('#dimmer').on('click', function(){
         const brightness = Math.round($(this).val() / 10) / 10;
         light.setState(null, brightness);
     });
 
-    // Light scenes buttons
-    
+    // Effect buttons handler
+    $('#effect-buttons').children().on('click', function() {
+        const effect = $(this).val();
+        switch (effect) {
+            case 'pulse':
+                light.setEffect('pulse', {
+                    cycles: 2,
+                    color: 'white',
+                });
+                break;
+            case 'breathe':
+                light.setEffect('breathe', {
+                    color: "yellow",
+                    period: 3,
+                    cycles: 100,
+                });
+                break;
+            case 'move':
+                light.setEffect('move', {
+                    direction: "forward",
+                    period: 2,
+                });
+                break;
+        }
+    });
 });
-
-
