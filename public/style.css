@@ -11,7 +11,7 @@ h2 {
     font-weight: bold;
     font-size: 24px;
     color: #04AB5B;
-    margin: 1.5rem auto;
+    margin: 1.5rem auto 0.5rem auto;
 }
 
 .logo {
@@ -24,6 +24,7 @@ h2 {
 }
 
 .header {
+    margin-top: 5px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
@@ -51,6 +52,11 @@ h2 {
 
 #effect-buttons .light-btn {
     background-color: #ff9800;
+}
+
+.error {
+    margin: 0 auto;
+    color: red;
 }
 
 @media screen and (max-width: 640px) {

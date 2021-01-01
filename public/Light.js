@@ -6,7 +6,6 @@ class Light {
 
   async listLights() { 
       const myHeaders = new Headers();
-      // myHeaders.append("Authorization", `Bearer ${APIKey}`);
   
       const requestOptions = {
       method: 'GET',
@@ -38,8 +37,10 @@ class Light {
       try {
           const response = await fetch(`lights/${this.id}/toggle`, requestOptions);
           if (response.ok) {
-              const jsonResponse = await response.json(); 
-              console.log(`Light with id: ${jsonResponse.results[0].id}, label: ${jsonResponse.results[0].label} has been turned ${jsonResponse.results[0].power}...`);
+              const jsonResponse = await response.json();
+              if(jsonResponse.results[0].status === 'ok') {
+                console.log(`Light with id: ${jsonResponse.results[0].id}, label: ${jsonResponse.results[0].label} has been turned ${jsonResponse.results[0].power}...`);
+              }
               return jsonResponse;
             } throw new Error('Request failed!')
           } catch(error) {
@@ -80,10 +81,8 @@ class Light {
   };
 
   async setEffect(effect, parameters) {
-    console.log(parameters);
       parameters.power_on = true;
       parameters.persists = true;
-      console.log(parameters);
       const myHeaders = new Headers();
       // myHeaders.append("Authorization", `Bearer ${APIKey}`);
       myHeaders.append("Content-type", `application/json`);

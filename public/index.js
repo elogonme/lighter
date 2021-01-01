@@ -13,7 +13,7 @@ $(document).ready(function() {
       };
 
     let sceneSource = {};
-    
+    $('.error').hide();
     const compiledHtml = template(colors);
     $('#light-buttons').html(compiledHtml);
 
@@ -31,24 +31,24 @@ $(document).ready(function() {
         const html = template(sceneSource);
         $('#scene-buttons').html(html);
         $('#scene-buttons').children().on('click', function() {
-            light.setScene($(this).val());
+            light.setScene($(this).val()).then(result => displayMessage(result));
         });
     });
 
     // Light power toggle button handler
     $('#power').on('click', () => {
-        light.toggleLight();
+        light.toggleLight().then(result => displayMessage(result));
     });
     
     // Light color control buttons
     $('#light-buttons').children().on('click', function() {
-        light.setState($(this).val());
+        light.setState($(this).val()).then(result => displayMessage(result));
     });
 
     // Dimmer control slider handler
     $('#dimmer').on('click', function(){
         const brightness = Math.round($(this).val() / 10) / 10;
-        light.setState(null, brightness);
+        light.setState(null, brightness).then(result => displayMessage(result));
     });
 
     // Effect buttons handler
@@ -59,21 +59,39 @@ $(document).ready(function() {
                 light.setEffect('pulse', {
                     cycles: 2,
                     color: 'white',
-                });
+                }).then(result => displayMessage(result));
                 break;
             case 'breathe':
                 light.setEffect('breathe', {
                     color: "yellow",
                     period: 3,
                     cycles: 100,
-                });
+                }).then(result => displayMessage(result));
                 break;
             case 'move':
                 light.setEffect('move', {
                     direction: "forward",
                     period: 2,
-                });
+                }).then(result => displayMessage(result));
                 break;
         }
     });
+
+    // Display error message
+    const displayMessage = (result) => {
+        let message = result.results[0].status;
+        let msgClass = '';
+        if (message === 'ok') {
+            message = 'light set successfully'
+            msgClass = 'green-text';
+        } else {
+            msgClass = 'red-text';
+            message = 'light is ' + message;
+        };
+        $('.error').removeClass('red-text green-text');
+        $('.error').addClass(msgClass);
+        $('.error').text(message);
+        $('.error').show();
+        setTimeout(() => $('.error').hide(), 5000);
+    }
 });
