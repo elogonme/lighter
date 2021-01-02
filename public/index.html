@@ -11,7 +11,7 @@
     <link type="text/css" rel="stylesheet" href="materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="style.css" media="screen,projection"/>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <!-- Hadlebars html template for color buttons -->
+    <!-- Hadlebars html template for buttons -->
     <script id="light-control" type="text/x-handlebars-template">
         {{#each buttons}}
         <button class="waves-effect waves-light btn {{this.name}} light-btn" value="{{this.value}}">{{this.name}}</button>
@@ -24,9 +24,11 @@
           <h1 class="title">lighter</h1>
           <a class="waves-effect waves-light" id="power" title="toggle on/off">
             <i class="material-icons logo">batch_prediction</i></a>
-          <p class="error"></p>
+          <p class="error green-text">control the LIFX light</p>
           <h2 class="header">Use buttons to control my light!</h2>
+          <!-- Light buttons placeholder div -->
           <div id="light-buttons"></div>
+          <!-- Dimmer slider -->
           <form action="#">
             <p class="range-field">
               <label for="dimmer" class="header">brightness</label>
@@ -34,8 +36,10 @@
             </p>
           </form>
           <h4 class="header">effects</h4>
+          <!-- Effect buttons placeholder div -->
           <div id="effect-buttons"></div>
           <h4 class="header">select scene</h4>
+          <!-- Scene buttons placeholder div -->
           <div id="scene-buttons"></div>
         </div>
     </section>
@@ -43,6 +47,5 @@
     <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
     <script src="Light.js"></script>
     <script src="index.js"></script>
-
 </body>
 </html>

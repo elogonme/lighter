@@ -1,25 +1,29 @@
 $(document).ready(function() {
+    // Template source for handlebars
     const templateSource = $('#light-control').html();
     let template = Handlebars.compile(templateSource);
+    // Predefinded colors array for light state
     const colors = {
         buttons: [{ name: 'white', value: 'white'}, { name: 'red', value: 'red'}, 
         { name: 'orange', value: 'orange'}, { name: 'yellow', value: 'yellow'}, 
         { name: 'cyan', value: 'cyan'}, { name: 'green', value: 'green'},
         { name: 'blue', value: 'blue' }, { name: 'purple', value: 'purple'}, { name: 'pink', value: 'pink'}]
       };
-
+    // Predefinded effects array for buttons
     const effects = {
         buttons: [{ name: 'chin-chin', value: 'pulse'}, { name: 'breathe', value: 'breathe'}, { name: 'move', value: 'move'}]
       };
 
     let sceneSource = {};
-    $('.error').hide();
+    // Initial message prompt
+    setTimeout(() => $('.error').animate({opacity: '0'}, "slow"), 3000);
+    // Compile color buttons html with handlebars
     const compiledHtml = template(colors);
     $('#light-buttons').html(compiledHtml);
-
+      // Compile effect buttons html with handlebars
     const effectsHtml = template(effects);
     $('#effect-buttons').html(effectsHtml);
-    
+    // Create new instance of light - insert your light id
     const light = new Light('d073d54171f5');
     // Get predefined light scenes and output buttons
     light.listScenes().then(scenes => {
@@ -77,7 +81,7 @@ $(document).ready(function() {
         }
     });
 
-    // Display error message
+    // Display error or success message
     const displayMessage = (result) => {
         let message = result.results[0].status;
         let msgClass = '';
@@ -88,10 +92,12 @@ $(document).ready(function() {
             msgClass = 'red-text';
             message = 'light is ' + message;
         };
+        // Set class to display red or green text depending on success or error
         $('.error').removeClass('red-text green-text');
         $('.error').addClass(msgClass);
         $('.error').text(message);
-        $('.error').show();
-        setTimeout(() => $('.error').hide(), 5000);
+        $('.error').animate({opacity: '1'}, "slow");
+        // Hide message after 5 sec
+        setTimeout(() => $('.error').animate({opacity: '0'}, "slow"), 5000);
     }
 });

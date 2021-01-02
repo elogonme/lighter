@@ -59,6 +59,7 @@ h2 {
     color: red;
 }
 
+// Styling for small screens - mobile devices
 @media screen and (max-width: 640px) {
     .title {
         margin: 10px auto;
