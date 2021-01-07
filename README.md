@@ -23,7 +23,7 @@ App also can be used during zoom meetings where other user can change background
 ## Installation
 
 App is deployed at [Heroku](https://heroku.com/). To install localy download repository. Run npm install and then npm start  
-Application can be accessed at [https://cryptic-basin-46919.herokuapp.com/](https://cryptic-basin-46919.herokuapp.com/)
+Application can be accessed at [https://lifx-lighter.herokuapp.com/](https://lifx-lighter.herokuapp.com/)
 
 ## Usage
 
