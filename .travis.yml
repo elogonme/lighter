@@ -9,7 +9,7 @@ deploy:
   provider: heroku
   api_key:
     secure: DGhA/76pG1pCnxWjtDAk5mWkPpSc/ZO0Q+RcLd39cM+oBbuJsL5P52Qntz0psredFBbkzcFpBolRW6Y71CbhebrzfI7kdVFuvHtR+dE+wA5U4Vbd6IPZbDbpC6eE/qPnitdng/xIu5OqjuskyExvW8hAYb937iXxzP5CeTwhUxG8hG1B4GzM79NYUufxRuzI7ZHu6+KqlyDF4HSNFeUlKPNlP8mzp+j6TsR+K8ktWu/iDqC7afSlpJEQV4Jj+et52UPcmMoedwsY2ifyp+wzoERikVUh9u7ud1GXuP4se0cOcXZ+LLXz85xc4y4mfPicuogTSXiGHClbTS2Ujy1rP0WS7hmVs5np5LtdFRft+Q11WzZxrf1y378401zRwArzsqVyvqUCJ/hR7/Xrwng+Ars8JroptpZ6LhYHQEpz55/OG0OhPk8y2PGxaRFfeCCRTznyFC7jCz5eyAmVMFNHLBWLeSkobib+sqJajR+HKamP100ttql6zaqjsZekHAqwsnuarXjq8DrXm8H/Lil4zsU5rQA5/O0oibyQzw/qoXhf8injviqmkApUdExuuyEbiTO7YXlpB1tdhtNDFY51tjr+SxtDfYEAnG7UQyiuRzp2eOOWEw9bzgAjKqU+2ddCd9+hqAiFC/5dQ5omJHEQh6XXiFvp0s5JlN8uNw6hslQ=
-  app: lighter
+  app: lifx-lighter
   on:
     repo: elogonme/lighter
     branch: main
