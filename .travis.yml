@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- stable
+npm: true
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: NyVA1ly7aPQCID/qBpjDYI0e3z1fCnlAouy3eb7/bbJ+5Me81nCkIBg5BcnvmNkEvdDnJa5j5mlfH/DllhARF4bhPHUQHYXINxXtNzNpWqfDskKspnZ/S9HU56hD+XS/HF3hi3rBR3o/Do10JOQsllK5kncp7TmpIkQj4u8PsSgi6Iyp6R+iBrBCd/9NDDRN6Hv2wgB7tPfoGWbREtHImQxzp9k9DnRkcGsu+PLkIjSsCCT/wWEJT47vlwHmQdZh3Mo7gyhhqW0Ps8EYzj5bZknX3EhebYCPwgEZzBQxrll89gjld/ehZgfWJpI8O4P/qX625yeTX/VbxFyeMss2SM7gLZ02lq5LXSyPo4vQIHhPX4SB06jHPH+npW6Op8wvc82KGF9rLCVox/hBPt3NkeFoMenqgzA18YF7H3O+gjLbBEnpO+fNnXqfLk0jFs/tWyjsllzEYZDhps4JuU2HIcyEZs3upcLsyoBB+NFTIsp1xezZGz2hO1gLYHaWNq6uAVtBs9mWFjaOCO/fBlngLrMy0ON9xi59Kpou+gjjSYcrKNlpHrB1Mcbqiqa5TCwTF3Gv1Tv9UmSoFej0UYvdJD7UtFu9wrAzzPRuRyh2v1+/KJ3fulIzPKOKs7ek3usv5YmPn+5u5idMMJzv8M3Zh48KW6yAjjX34jVLr203jSw=
+  app: lighter
+  on:
+    repo: elogonme/lighter
+    branch: main
+  skip_cleanup: 'true'
