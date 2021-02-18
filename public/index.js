@@ -10,6 +10,8 @@ $(document).ready(() => {
       { name: 'cyan', value: 'cyan' }, { name: 'green', value: 'green' },
       { name: 'blue', value: 'blue' }, { name: 'purple', value: 'purple' }, { name: 'pink', value: 'pink' }],
   };
+
+  let brightness = 0.5;
     // Predefinded effects array for buttons
   const effects = {
     buttons: [{ name: 'chin-chin', value: 'pulse' }, { name: 'breathe', value: 'breathe' }, { name: 'move', value: 'move' }],
@@ -66,12 +68,12 @@ $(document).ready(() => {
 
   // Light color control buttons
   $('#light-buttons').children().on('click', function () {
-    light.setState($(this).val()).then((result) => displayMessage(result));
+    light.setState($(this).val(), brightness).then((result) => displayMessage(result));
   });
 
   // Dimmer control slider handler
   $('#dimmer').on('click', function () {
-    const brightness = Math.round($(this).val() / 10) / 10;
+    brightness = Math.round($(this).val() / 10) / 10;
     light.setState(null, brightness).then((result) => displayMessage(result));
   });
 
